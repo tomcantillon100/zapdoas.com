@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About - Zapdoas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a class="logo" href="index.html">⚡ ZAPDOAS</a>
+    <ul>
+      <li><a class="link" href="index.html">Home</a></li>
+      <li><a class="link active" href="about.html">About</a></li>
+      <li><a class="link" href="movies.html">Movies</a></li>
+      <li><a class="link" href="play.html">Play</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>About</h2>
+    <div class="panel">
+      <p>Hi! This is my personal site. Write a few lines about yourself here: what you like and anything you want people to know.</p>
+    </div>
+  </main>
+
+  <footer>A personal, non-commercial fan site. Not affiliated with or endorsed by The Pokémon Company or Nintendo.</footer>
+
+  <img id="zapdos" src="zapdos.svg" alt="Zapdos. Click me!" title="Click me!">
+  <div id="flash"></div>
+
+  <script>
+    const bird = document.getElementById("zapdos");
+    const flash = document.getElementById("flash");
+    bird.addEventListener("click", () => {
+      bird.classList.remove("zap");
+      void bird.offsetWidth;
+      bird.classList.add("zap");
+      flash.classList.add("on");
+      setTimeout(() => flash.classList.remove("on"), 90);
+      setTimeout(() => bird.classList.remove("zap"), 450);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Play - Zapdoas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a class="logo" href="index.html">⚡ ZAPDOAS</a>
+    <ul>
+      <li><a class="link" href="index.html">Home</a></li>
+      <li><a class="link" href="about.html">About</a></li>
+      <li><a class="link" href="movies.html">Movies</a></li>
+      <li><a class="link active" href="play.html">Play</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <h1>Play</h1>
+      <p>Head over to my media server.</p>
+      <!-- Change the address below once your server is set up, e.g. https://play.zapdoas.com -->
+      <a class="btn" href="https://play.zapdoas.com">Open the server ▶</a>
+    </section>
+    <div class="panel">
+      <p>This button won't work until the server is running and play.zapdoas.com is set up.</p>
+    </div>
+  </main>
+
+  <footer>A personal, non-commercial fan site. Not affiliated with or endorsed by The Pokémon Company or Nintendo.</footer>
+
+  <img id="zapdos" src="zapdos.svg" alt="Zapdos. Click me!" title="Click me!">
+  <div id="flash"></div>
+
+  <script>
+    const bird = document.getElementById("zapdos");
+    const flash = document.getElementById("flash");
+    bird.addEventListener("click", () => {
+      bird.classList.remove("zap");
+      void bird.offsetWidth;
+      bird.classList.add("zap");
+      flash.classList.add("on");
+      setTimeout(() => flash.classList.remove("on"), 90);
+      setTimeout(() => bird.classList.remove("zap"), 450);
+    });
+  </script>
+</body>
+</html>
