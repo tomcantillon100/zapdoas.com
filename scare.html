@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>totally not jump scare</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #0a0a0a;
+    color: #888;
+    font-family: "Courier New", monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  #intro { text-align: center; animation: flicker 3s infinite; }
+  #scare {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #b00000;
+    color: #fff;
+    font-size: 15vw;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 30px #000;
+  }
+  .shake { animation: shake 0.2s infinite; }
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+    52% { opacity: 1; }
+    54% { opacity: 0.2; }
+  }
+  @keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-8px, 4px); }
+    50% { transform: translate(6px, -6px); }
+    75% { transform: translate(-4px, -2px); }
+    100% { transform: translate(0, 0); }
+  }
+</style>
+</head>
+<body>
+<div id="intro">
+  <p>it's quiet in here...</p>
+  <p>click anywhere to continue</p>
+</div>
+<div id="scare">BOO!</div>
+
+<script>
+  const intro = document.getElementById("intro");
+  const scare = document.getElementById("scare");
+  let started = false;
+
+  document.body.addEventListener("click", () => {
+    if (started) return;
+    started = true;
+    intro.innerHTML = "<p>something is behind you...</p>";
+
+    setTimeout(() => {
+      intro.style.display = "none";
+      scare.style.display = "flex";
+      scare.classList.add("shake");
+      document.body.style.background = "#b00000";
+
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sawtooth";
+        osc.frequency.value = 80;
+        gain.gain.value = 0.5;
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.6);
+      } catch (e) { /* audio not supported */ }
+
+      setTimeout(() => {
+        scare.style.display = "none";
+        scare.classList.remove("shake");
+        document.body.style.background = "#0a0a0a";
+        intro.style.display = "block";
+        intro.innerHTML = "<p>...that was close.</p><p>refresh to try again</p>";
+        started = false;
+      }, 2000);
+    }, 2000 + Math.random() * 4000);
+  });
+</script>
+</body>
+</html>
