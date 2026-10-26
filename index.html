@@ -1,10 +1,65 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Zapdoas</title>
-  </head>
-  <body>
-    <h1>Welcome</h1>
-    <p>This is my school project about Zapdos.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zapdoas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a class="logo" href="index.html">⚡ ZAPDOAS</a>
+    <ul>
+      <li><a class="link active" href="index.html">Home</a></li>
+      <li><a class="link" href="about.html">About</a></li>
+      <li><a class="link" href="movies.html">Movies</a></li>
+      <li><a class="link" href="play.html">Play</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <h1>Welcome to Zapdoas</h1>
+      <p>My corner of the internet for movies and whatever else I'm into. Click around, and give the bird in the corner a poke.</p>
+      <a class="btn" href="movies.html">Browse movies ⚡</a>
+    </section>
+
+    <section class="grid">
+      <a class="card" href="about.html">
+        <div class="icon">👋</div>
+        <h3>About</h3>
+        <p>Who I am and what this site is about.</p>
+      </a>
+      <a class="card" href="movies.html">
+        <div class="icon">🎬</div>
+        <h3>Movies</h3>
+        <p>My watch list and ratings. Searchable.</p>
+      </a>
+      <a class="card" href="play.html">
+        <div class="icon">▶️</div>
+        <h3>Play</h3>
+        <p>Jump to my media server.</p>
+      </a>
+    </section>
+  </main>
+
+  <footer>A personal, non-commercial fan site. Not affiliated with or endorsed by The Pokémon Company or Nintendo.</footer>
+
+  <img id="zapdos" src="zapdos.svg" alt="Zapdos. Click me!" title="Click me!">
+  <div id="flash"></div>
+
+  <script>
+    const bird = document.getElementById("zapdos");
+    const flash = document.getElementById("flash");
+    bird.addEventListener("click", () => {
+      bird.classList.remove("zap");
+      void bird.offsetWidth;
+      bird.classList.add("zap");
+      flash.classList.add("on");
+      setTimeout(() => flash.classList.remove("on"), 90);
+      setTimeout(() => bird.classList.remove("zap"), 450);
+    });
+  </script>
+</body>
 </html>
+
