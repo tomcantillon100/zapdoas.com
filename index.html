@@ -1,22 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Don't Look Behind You</title>
+<title>Welcome Home</title>
 <style>
   body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     background: #0a0a0a;
-    color: #888;
+    color: #aaa;
     font-family: "Courier New", monospace;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    overflow: hidden;
+    gap: 20px;
   }
-  #intro { text-align: center; animation: flicker 3s infinite; }
+  h1 { color: #ddd; letter-spacing: 4px; animation: flicker 4s infinite; }
+  p { max-width: 420px; text-align: center; line-height: 1.5; }
+  button {
+    background: transparent;
+    color: #ccc;
+    border: 1px solid #555;
+    padding: 12px 28px;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  button:hover { border-color: #b00000; color: #fff; }
+
   #scare {
     display: none;
     position: fixed;
@@ -29,13 +42,13 @@
     justify-content: center;
     text-shadow: 0 0 30px #000;
   }
+  .shake { animation: shake 0.2s infinite; }
   @keyframes flicker {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+    50% { opacity: 0.5; }
     52% { opacity: 1; }
-    54% { opacity: 0.2; }
+    54% { opacity: 0.3; }
   }
-  .shake { animation: shake 0.2s infinite; }
   @keyframes shake {
     0% { transform: translate(0, 0); }
     25% { transform: translate(-8px, 4px); }
@@ -46,31 +59,24 @@
 </style>
 </head>
 <body>
-<div id="intro">
-  <p>it's quiet in here...</p>
-  <p>click anywhere to continue</p>
-</div>
+<h1>WELCOME HOME</h1>
+<p>You've been expected for a long time.<br>Make yourself comfortable.</p>
+<button id="enter">Enter</button>
+
 <div id="scare">BOO!</div>
 
 <script>
-  const intro = document.getElementById("intro");
+  const enter = document.getElementById("enter");
   const scare = document.getElementById("scare");
-  let started = false;
 
-  document.body.addEventListener("click", () => {
-    if (started) return;
-    started = true;
-    intro.innerHTML = "<p>something is behind you...</p>";
+  enter.addEventListener("click", () => {
+    enter.textContent = "Just a moment...";
+    enter.disabled = true;
 
-    // Random delay before the jumpscare
-    const delay = 2000 + Math.random() * 4000;
     setTimeout(() => {
-      intro.style.display = "none";
       scare.style.display = "flex";
       scare.classList.add("shake");
-      document.body.style.background = "#b00000";
 
-      // Optional: a short, loud beep using the Web Audio API
       try {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
         const osc = ctx.createOscillator();
@@ -82,18 +88,15 @@
         gain.connect(ctx.destination);
         osc.start();
         osc.stop(ctx.currentTime + 0.6);
-      } catch (e) { /* audio not supported, skip */ }
+      } catch (e) { /* audio not supported */ }
 
-      // Return to calm after a moment
       setTimeout(() => {
         scare.style.display = "none";
         scare.classList.remove("shake");
-        document.body.style.background = "#0a0a0a";
-        intro.style.display = "block";
-        intro.innerHTML = "<p>...that was close.</p><p>refresh to try again</p>";
-        started = false;
+        enter.textContent = "Enter";
+        enter.disabled = false;
       }, 2000);
-    }, delay);
+    }, 2500 + Math.random() * 3000);
   });
 </script>
 </body>
