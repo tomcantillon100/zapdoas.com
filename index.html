@@ -4,12 +4,145 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Heatwave Classroom – Smart Environment Monitor</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f2f7fc;
+      color: #18324b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 2.5rem 1rem 1.5rem;
+      text-align: center;
+      color: white;
+      background: linear-gradient(135deg, #087e8b, #185adb);
+    }
+
+    header h1 {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.2;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      padding: 0.8rem 1rem;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgb(24 50 75 / 12%);
+    }
+
+    nav a {
+      display: inline-block;
+      padding: 0.55rem 1rem;
+      border: 2px solid #c8dff2;
+      border-radius: 999px;
+      color: #174a75;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      border-color: #185adb;
+      color: white;
+      background: #185adb;
+      outline: none;
+    }
+
+    main {
+      width: min(900px, calc(100% - 2rem));
+      margin: 2rem auto;
+    }
+
+    section {
+      margin: 1.25rem 0;
+      padding: 1.5rem 1.75rem;
+      border: 1px solid #d5e5f2;
+      border-left: 6px solid #16a6a1;
+      border-radius: 14px;
+      background: white;
+      box-shadow: 0 5px 16px rgb(24 50 75 / 8%);
+      scroll-margin-top: 5rem;
+    }
+
+    section:nth-of-type(even) {
+      border-left-color: #f2a541;
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: #087e8b;
+    }
+
+    section:nth-of-type(even) h2 {
+      color: #a45b00;
+    }
+
+    section p {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding-top: 1.75rem;
+      }
+
+      nav {
+        gap: 0.4rem;
+      }
+
+      nav a {
+        padding: 0.45rem 0.75rem;
+      }
+
+      section {
+        padding: 1.2rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main>
+  <header>
     <h1>Heatwave Classroom – Smart Environment Monitor</h1>
+  </header>
 
-    <section>
+  <nav aria-label="Page sections">
+    <a href="#investigation">Investigation</a>
+    <a href="#design">Design</a>
+    <a href="#create">Create</a>
+    <a href="#conclusion">Conclusion</a>
+  </nav>
+
+  <main>
+    <section id="investigation">
       <h2>Investigation</h2>
       <p>
         My project is a smart classroom monitor that detects high temperatures.
@@ -19,7 +152,7 @@
       </p>
     </section>
 
-    <section>
+    <section id="design">
       <h2>Design</h2>
       <p>
         The micro:bit temperature sensor is the input. When the temperature
@@ -28,7 +161,7 @@
       </p>
     </section>
 
-    <section>
+    <section id="create">
       <h2>Create</h2>
       <p>
         I placed a small fan on a support stand and aimed it at the micro:bit
@@ -37,7 +170,7 @@
       </p>
     </section>
 
-    <section>
+    <section id="conclusion">
       <h2>Conclusion</h2>
       <p>
         My project helps make classrooms more comfortable by detecting high
