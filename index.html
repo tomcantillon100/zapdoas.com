@@ -5,21 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heatwave Classroom Micro:bit Project</title>
   <style>
+    /* These styles make the page easy to read. */
     body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
       margin: 20px;
-      background-color: #f5f5f5;
+      background-color: #f3f5f8;
+      color: #243047;
     }
 
+    /* Keep the page from getting too wide on a big screen. */
     main {
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
+    /* A box is a white card around one topic. */
     .box {
       background-color: white;
-      border: 2px solid #333;
+      border: 1px solid #cbd2dc;
       border-radius: 8px;
       padding: 16px;
       margin-bottom: 16px;
@@ -27,6 +31,29 @@
 
     h1, h2 {
       margin-top: 0;
+    }
+
+    pre {
+      background-color: #eef1f5;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #cbd2dc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .photo-note {
+      border: 2px dashed #9aa8ba;
+      padding: 12px;
     }
   </style>
 </head>
@@ -37,14 +64,85 @@
     <section class="box">
       <h2>Investigation</h2>
       <p>Hot classrooms can make it harder for students and teachers to feel comfortable while learning.</p>
-      <p>I am exploring how a Micro:bit could help measure the temperature in a classroom. A study found a link between classroom temperature and students' test scores. It looked at temperatures from 20°C to 25°C. This does not mean that one temperature is best for every classroom, but it shows why classroom temperature is worth investigating [1].</p>
+      <p>I am exploring how a Micro:bit could help measure the temprature in a classroom. A study found a link between classroom temperature and students' test scores. It looked at classroom temperature and ventilation.</p>
     </section>
-<h1>Design</h1>
-    <P>i design the micro bit </P>
+
+    <section class="box">
+      <h2>Design: inputs and outputs</h2>
+      <p>The Micro:bit checks the temperature near the device. It then shows a number and a simple face on its LED lights. The example alert point is 28°C. This is just a setting for my project, not an official safety limit.</p>
+      <table>
+        <tr><th>Part</th><th>What it does</th></tr>
+        <tr><td>Input: built-in temperature sensor</td><td>Reads the temperature around the Micro:bit.</td></tr>
+        <tr><td>Decision: my program</td><td>Checks whether the reading is 28°C or higher.</td></tr>
+        <tr><td>Output: built-in LED lights</td><td>Shows the temperature, then a sad face if it is at least 28°C, or a happy face if it is lower.</td></tr>
+      </table>
+      <p><strong>One thing to remember:</strong> The sensor measures the Micro:bit's own board, so sunlight or heat from the device can change the reading. Put it in a shady place and treat the number as an estimate.</p>
+    </section>
+
+    <section class="box">
+      <h2>Wiring diagram</h2>
+      <p>I don't need extra wires for this version because the temperature sensor and LED lights are already inside the Micro:bit.</p>
+      <p><strong>Temperature sensor (input) → Micro:bit program (decision) → LED lights (output)</strong></p>
+    </section>
+
+    <section class="box">
+      <h2>How the program decides</h2>
+      <ol>
+        <li>Start the program.</li>
+        <li>Read the temperature.</li>
+        <li>Show the temperature number.</li>
+        <li>If it is 28°C or more, show a sad face. If not, show a happy face.</li>
+        <li>Wait five seconds, then do it again.</li>
+      </ol>
+    </section>
+
+    <section class="box">
+      <h2>Build photos</h2>
+      <p>Add your own photos after you build and test your project. Write a caption to say what each photo shows.</p>
+      <div class="photo-note">Add a photo of my Micro:bit build here.</div>
+    </section>
+
+    <section class="box">
+      <h2>My code</h2>
+      <p>This is MakeCode JavaScript. The comments are notes that explain what each part does.</p>
+      <pre><code>// Keep repeating the code inside these curly brackets.
+basic.forever(function () {
+  // Get the temperature in Celsius and save it in a variable.
+  let temp = input.temperature()
+
+  // Show the temperature number on the Micro:bit.
+  basic.showNumber(temp)
+
+  // Check if the temperature is 28 or higher.
+  if (temp &gt;= 28) {
+    // Show a sad face when it is warm.
+    basic.showIcon(IconNames.Sad)
+  } else {
+    // Otherwise show a happy face.
+    basic.showIcon(IconNames.Happy)
+  }
+
+  // Wait five seconds before checking again.
+  basic.pause(5000)
+})</code></pre>
+    </section>
+
+    <section class="box">
+      <h2>Problems I might have</h2>
+      <p>I have not tested every problem yet. When I build it, I will write down what actualy went wrong and what I did to fix it.</p>
+      <table>
+        <tr><th>Problem to check</th><th>Something I could try</th></tr>
+        <tr><td>The temperature looks too high.</td><td>Move the Micro:bit away from sunlight or warm electronics and wait a little while.</td></tr>
+        <tr><td>The display is hard to read.</td><td>Make the wait time longer by changing the number in basic.pause.</td></tr>
+        <tr><td>My problem and fix:</td><td>Write what happened and how I fixed it.</td></tr>
+      </table>
+    </section>
+
     <section class="box">
       <h2>References</h2>
-      <p>[1] Haverinen-Shaughnessy, U. and Shaughnessy, R. J. (2015). “Effects of Classroom Ventilation Rate and Temperature on Students’ Test Scores.” <em>PLOS ONE</em>, 10(8), e0136165.</p>
-      <p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4552953/">Read the study on PubMed Central</a>.</p>
+      <p>[1] Haverinen-Shaughnessy, U. and Shaughnessy, R. J. (2015). “Effects of Classroom Ventilation Rate and Temperature on Students’ Test Scores.” <em>PLOS ONE</em>, 10(8), e0136165. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4552953/">Read the study on PubMed Central</a>.</p>
+      <p>[2] Micro:bit Educational Foundation. <a href="https://makecode.microbit.org/reference/input/temperature">Temperature (MakeCode reference)</a>. Used for information about reading the built-in temperature sensor.</p>
+      <p>[3] Microsoft MakeCode. <a href="https://makecode.microbit.org/reference/basic/show-number">Show number</a> and <a href="https://makecode.microbit.org/reference/basic/show-icon">Show icon</a>. Used for the display code.</p>
     </section>
   </main>
 </body>
