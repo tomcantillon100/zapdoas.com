@@ -1,13 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Mirco Bit Heatwave Classroom</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heatwave Classroom Micro:bit Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      background-color: #f3f5f8;
+      color: #243047;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .box {
+      background-color: white;
+      border: 1px solid #cbd2dc;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #cbd2dc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .photo-note {
+      border: 2px dashed #9aa8ba;
+      padding: 12px;
+    }
+
+    pre {
+      background-color: #eef1f5;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    .wiring-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 2px dashed #9aa8ba;
+      border-radius: 6px;
+      background: #f8f8f8;
+      margin-top: 16px;
+    }
+  </style>
 </head>
 <body>
-<section>
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-</section>
-<img src="IMG_0833.jpeg" alt=wiring diagram>
+  <main>
+    <h1>Heatwave Classroom Micro:bit Project</h1>
+
+    <section class="box">
+      <h2>Investigation</h2>
+      <p>Hot classrooms can make it harder for students and teachers to feel comfortable while learning.</p>
+      <p>I am exploring how a Micro:bit could help measure the temperature in a classroom. A study found a link between classroom temperature and students' test scores. It looked at classroom temperature and ventilation, and showed that hotter classrooms were linked with lower results.</p>
+    </section>
+
+    <section class="box">
+      <h2>Design: inputs and outputs</h2>
+      <p>The Micro:bit checks the temperature near the device. It then shows a number and a simple face on its LED lights. The example alert point is 28°C. This is just a setting for my project, not a medical or official rule.</p>
+      <table>
+        <tr><th>Part</th><th>What it does</th></tr>
+        <tr><td>Input: built-in temperature sensor</td><td>Reads the temperature around the Micro:bit.</td></tr>
+        <tr><td>Decision: my program</td><td>Checks whether the reading is 28°C or higher.</td></tr>
+        <tr><td>Output: built-in LED lights</td><td>Shows the temperature, then a sad face if it is at least 28°C, or a happy face if it is lower.</td></tr>
+      </table>
+      <p><strong>One thing to remember:</strong> The sensor measures the Micro:bit's own board, so sunlight or heat from the device can change the reading. Put it in a shady place and treat the number as a classroom estimate, not an exact room thermometer.</p>
+    </section>
+
+    <section class="box">
+      <h2>Wiring diagram</h2>
+      <p>I don't need extra wires for this version because the temperature sensor and LED lights are already inside the Micro:bit.</p>
+      <p><strong>Temperature sensor (input) → Micro:bit program (decision) → LED lights (output)</strong></p>
+
+      <svg class="wiring-svg" viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hand-drawn diagram showing a Micro:bit temperature display and an LED connected to a fan on the right.">
+        <defs>
+          <style>
+            .hand { font-family: "Segoe Print", "Comic Sans MS", cursive; fill: #1e1e1e; }
+            .blue { fill: #1b3b8b; }
+            .red { fill: #b22525; }
+            .green { fill: #0f7f5c; }
+            .black { stroke: #1c1c1c; stroke-width: 4; fill: none; }
+            .thin { stroke: #1c1c1c; stroke-width: 2.5; fill: none; }
+            .label { font-size: 28px; font-style: italic; }
+            .small { font-size: 22px; }
+            .title { font-size: 34px; font-style: italic; }
+          </style>
+        </defs>
+
+        <g>
+          <text x="135" y="70" class="hand blue title">Computer Science</text>
+          <text x="355" y="120" class="hand red title">Wiring Diagram</text>
+        </g>
+
+        <g>
+          <path class="thin" d="M 120 240 L 550 240" />
+          <path class="thin" d="M 120 260 L 550 260" />
+          <path class="thin" d="M 120 280 L 550 280" />
+          <path class="thin" d="M 120 300 L 550 300" />
+          <path class="thin" d="M 120 320 L 550 320" />
+          <path class="thin" d="M 120 340 L 550 340" />
+          <path class="thin" d="M 120 360 L 550 360" />
+          <path class="thin" d="M 120 380 L 550 380" />
+          <path class="thin" d="M 120 400 L 550 400" />
+          <path class="thin" d="M 120 420 L 550 420" />
+
+          <path class="black" d="M 120 210 L 120 212 L 430 212 L 430 250" />
+          <path class="black" d="M 130 185 L 430 185 L 430 210" />
+          <path class="black" d="M 130 185 L 130 205" />
+          <path class="black" d="M 430 185 L 430 205" />
+          <text x="135" y="170" class="hand label blue">Micro:bit (displays temperature)</text>
+          <text x="185" y="488" class="hand label small">environmental</text>
+          <text x="185" y="520" class="hand label small">monitor</text>
+          <path class="black" d="M 220 410 L 220 470" />
+          <path class="black" d="M 220 470 L 200 505" />
+          <path class="black" d="M 220 470 L 240 505" />
+        </g>
+
+        <g>
+          <path class="black" d="M 570 170 L 770 170" />
+          <path class="black" d="M 770 170 L 870 170" />
+          <path class="black" d="M 520 170 L 570 170" />
+          <path class="black" d="M 660 170 L 660 115" />
+          <text x="690" y="145" class="hand label red">LED</text>
+          <text x="805" y="145" class="hand label blue">Micro:bit</text>
+          <path class="black" d="M 648 95 L 648 155" />
+          <path class="black" d="M 640 95 L 670 95" />
+          <circle cx="648" cy="82" r="13" fill="#2ab66e" stroke="#1c1c1c" stroke-width="2.5"/>
+          <path class="black" d="M 708 150 L 708 420" />
+          <path class="black" d="M 708 420 L 610 520" />
+          <path class="black" d="M 610 520 L 610 555" />
+          <path class="black" d="M 708 150 L 792 150" />
+          <path class="black" d="M 792 150 L 870 150" />
+          <g transform="translate(760 142)">
+            <rect x="0" y="0" width="110" height="50" rx="4" fill="#f4f4f4" stroke="#1c1c1c" stroke-width="3"/>
+            <path d="M 24 13 L 24 37" stroke="#1c1c1c" stroke-width="2.5"/>
+            <path d="M 46 13 L 46 37" stroke="#1c1c1c" stroke-width="2.5"/>
+            <path d="M 68 13 L 68 37" stroke="#1c1c1c" stroke-width="2.5"/>
+            <path d="M 90 13 L 90 37" stroke="#1c1c1c" stroke-width="2.5"/>
+          </g>
+          <text x="820" y="250" class="hand label small">fan</text>
+          <path class="black" d="M 690 390 L 670 430 L 650 390" />
+          <path class="black" d="M 670 430 L 690 510" />
+          <path class="black" d="M 670 430 L 660 520" />
+          <circle cx="630" cy="540" r="42" fill="#f5f5f5" stroke="#1c1c1c" stroke-width="3"/>
+          <circle cx="630" cy="540" r="16" fill="#0d0d0d" />
+          <path class="black" d="M 630 500 L 630 580" />
+          <path class="black" d="M 590 540 L 670 540" />
+          <path class="black" d="M 610 520 L 650 560" />
+          <path class="black" d="M 650 520 L 610 560" />
+          <text x="500" y="500" class="hand label small">fan</text>
+          <text x="620" y="432" class="hand label small">motor</text>
+          <text x="620" y="438" class="hand label small" style="font-size:17px;">driver</text>
+        </g>
+
+        <g>
+          <path class="black" d="M 532 170 L 532 200" />
+          <text x="630" y="190" class="hand label blue">LED driver</text>
+        </g>
+      </svg>
+    </section>
+
+    <section class="box">
+      <h2>How the program decides</h2>
+      <ol>
+        <li>Start the program.</li>
+        <li>Read the temperature.</li>
+        <li>Show the temperature number.</li>
+        <li>If it is 28°C or more, show a sad face. If not, show a happy face.</li>
+        <li>Wait five seconds, then do it again.</li>
+      </ol>
+    </section>
+
+    <section class="box">
+      <h2>My code, explained</h2>
+      <p>This short program reads the temperature, shows it, and then displays a face based on whether it is 28°C or higher.</p>
+      <pre><code>basic.forever(function () {
+  let temp = input.temperature()
+  basic.showNumber(temp)
+
+  if (temp &gt;= 28) {
+    basic.showIcon(IconNames.Sad)
+  } else {
+    basic.showIcon(IconNames.Happy)
+  }
+
+  basic.pause(5000)
+})</code></pre>
+    </section>
+
+    <section class="box">
+      <h2>Build photos</h2>
+      <p>Add your own photos after you build and test your project. Write a caption to say what each photo shows.</p>
+      <div class="photo-note">Add a photo of my Micro:bit build here.</div>
+    </section>
+
+    <section class="box">
+      <h2>Problems I might have</h2>
+      <p>I have not tested every problem yet. When I build it, I will write down what actually went wrong and what I did to fix it.</p>
+      <table>
+        <tr><th>Problem to check</th><th>Something I could try</th></tr>
+        <tr><td>The temperature looks too high.</td><td>Move the Micro:bit away from sunlight or warm electronics and wait a little while.</td></tr>
+        <tr><td>The display is hard to read.</td><td>Make the wait time longer by changing the number in basic.pause.</td></tr>
+        <tr><td>My problem and fix:</td><td>Write what happened and how I fixed it.</td></tr>
+      </table>
+    </section>
+
+    <section class="box">
+      <h2>References</h2>
+      <p>[1] Haverinen-Shaughnessy, U. and Shaughnessy, R. J. (2015). “Effects of Classroom Ventilation Rate and Temperature on Students’ Test Scores.” <em>PLOS ONE</em>, 10(8), e0136165. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0136165">Read the study</a>.</p>
+      <p>[2] Micro:bit Educational Foundation. <a href="https://makecode.microbit.org/reference/input/temperature">Temperature (MakeCode reference)</a>. Used for information about reading the built-in temperature sensor.</p>
+      <p>[3] Microsoft MakeCode. <a href="https://makecode.microbit.org/reference/basic/show-number">Show number</a> and <a href="https://makecode.microbit.org/reference/basic/show-icon">Show icon</a>. Used for the display code examples.</p>
+    </section>
+  </main>
 </body>
 </html>
