@@ -52,6 +52,26 @@
       border: 2px dashed #9aa8ba;
       padding: 12px;
     }
+
+    .wiring-photo {
+      margin: 16px 0 0;
+      border: 2px dashed #9aa8ba;
+      border-radius: 6px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .wiring-photo img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .wiring-photo figcaption {
+      margin-top: 8px;
+      color: #536176;
+    }
   </style>
 </head>
 <body>
@@ -80,6 +100,10 @@
       <h2>Wiring diagram</h2>
       <p>I don't need extra wires for this version because the temperature sensor and LED lights are already inside the Micro:bit.</p>
       <p><strong>Temperature sensor (input) → Micro:bit program (decision) → LED lights (output)</strong></p>
+      <figure class="wiring-photo">
+        <img src="images/wiring-diagram.jpg" alt="Hand-drawn wiring diagram for the Micro:bit project">
+        <figcaption>Hand-drawn wiring diagram of my Micro:bit setup showing the temperature sensor and LED display.</figcaption>
+      </figure>
     </section>
 
     <section class="box">
